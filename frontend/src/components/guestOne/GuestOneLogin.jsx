@@ -29,7 +29,7 @@ const GuestOneLogin = () => {
     }
     setIsLoading(true);
     try {
-      const res = await axios.post("http://localhost:2000/login", formData);
+      const res = await axios.post("https://vadgaon-hero-s.onrender.com/login", formData);
       setMessage({ text: res.data.message, type: "success" });
       // Save user details in localStorage (optional)
       localStorage.setItem("user", JSON.stringify(res.data.user));

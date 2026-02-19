@@ -5,7 +5,7 @@ const AdminUsers = () => {
   const [users, setUsers] = useState([]);
 
   const fetchUsers = async () => {
-    const res = await axios.get("http://localhost:2000/users");
+    const res = await axios.get("https://vadgaon-hero-s.onrender.com/users");
     setUsers(res.data);
   };
 
@@ -14,13 +14,13 @@ const AdminUsers = () => {
   }, []);
 
   const approveUser = async (id) => {
-    await axios.put(`http://localhost:2000/approve/${id}`);
+    await axios.put(`https://vadgaon-hero-s.onrender.com/approve/${id}`);
     fetchUsers();
   };
 
   const deleteUser = async (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
-      await axios.delete(`http://localhost:2000/delete/${id}`);
+      await axios.delete(`https://vadgaon-hero-s.onrender.com/delete/${id}`);
       fetchUsers();
     }
   };

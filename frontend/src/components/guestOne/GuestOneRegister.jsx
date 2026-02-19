@@ -31,7 +31,7 @@ const GuestOneRegister = () => {
     
     setIsLoading(true);
     try {
-      const res = await axios.post("http://localhost:2000/register", formData);
+      const res = await axios.post("https://vadgaon-hero-s.onrender.com/register", formData);
       setMessage({ text: res.data.message, type: "success" });
       setFormData({ name: "", email: "", contact: "", password: "" });
       setValidated(false);

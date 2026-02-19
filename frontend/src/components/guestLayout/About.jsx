@@ -11,7 +11,7 @@ const About = () => {
   });
 
   useEffect(() => {
-    axios.get("http://localhost:2000/api/about")
+    axios.get("https://vadgaon-hero-s.onrender.com/api/about")
       .then(res => setData(res.data))
       .catch(err => console.log(err));
   }, []);
@@ -194,7 +194,7 @@ const About = () => {
                   {item.photos.map((photo, pIndex) => (
                     <img
                       key={pIndex}
-                      src={`http://localhost:2000/${photo.url}`}
+                      src={`https://vadgaon-hero-s.onrender.com/${photo.url}`}
                       alt="improvement"
                       onClick={() =>
                         setViewer({
@@ -224,7 +224,7 @@ const About = () => {
 
           <img
             className="viewer-img"
-            src={`http://localhost:2000/${
+            src={`https://vadgaon-hero-s.onrender.com/${
               data[viewer.recordIndex].photos[viewer.photoIndex].url
             }`}
             alt=""

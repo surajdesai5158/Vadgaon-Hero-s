@@ -13,7 +13,7 @@ const AdminTemple = () => {
   const [preview, setPreview] = useState([]);
   const [temples, setTemples] = useState([]);
 
-  const API = "http://localhost:2000/api/temple";
+  const API = "https://vadgaon-hero-s.onrender.com/api/temple";
 
   useEffect(() => {
     fetchTemples();
@@ -137,7 +137,7 @@ const AdminTemple = () => {
               {temple.photos?.map((photo, i) => (
                 <img
                   key={i}
-                  src={`http://localhost:2000/${photo.url}`}
+                  src={`https://vadgaon-hero-s.onrender.com/${photo.url}`}
                   alt=""
                   style={styles.previewImg}
                 />

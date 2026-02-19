@@ -9,7 +9,7 @@ const Cricket = () => {
   const [currentImages, setCurrentImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const API = "http://localhost:2000/api/cricket";
+  const API = "https://vadgaon-hero-s.onrender.com/api/cricket";
 
   useEffect(() => {
     fetchResults();
@@ -60,7 +60,7 @@ const Cricket = () => {
               {item.photos?.map((photo, i) => (
                 <img
                   key={i}
-                  src={`http://localhost:2000/uploads/${photo}`}
+                  src={`https://vadgaon-hero-s.onrender.com/uploads/${photo}`}
                   alt=""
                   style={styles.image}
                   onClick={() => openViewer(item.photos, i)}
@@ -83,7 +83,7 @@ const Cricket = () => {
           </button>
 
           <img
-            src={`http://localhost:2000/uploads/${currentImages[currentIndex]}`}
+            src={`https://vadgaon-hero-s.onrender.com/uploads/${currentImages[currentIndex]}`}
             alt=""
             style={styles.fullImage}
           />

@@ -14,7 +14,7 @@ const AdminFestival = () => {
   const [loading, setLoading] = useState(false);
 
   const fetchFestivals = async () => {
-    const res = await axios.get("http://localhost:2000/festival");
+    const res = await axios.get("https://vadgaon-hero-s.onrender.com/festival");
     setFestivals(res.data);
   };
 
@@ -44,7 +44,7 @@ const AdminFestival = () => {
 
       formData.photos.forEach((photo) => data.append("photos", photo));
 
-      await axios.post("http://localhost:2000/festival/create", data);
+      await axios.post("https://vadgaon-hero-s.onrender.com/festival/create", data);
       alert("🎉 Festival added successfully");
 
       setFormData({
@@ -64,7 +64,7 @@ const AdminFestival = () => {
 
   const deleteFestival = async (id) => {
     if (!window.confirm("Delete this festival?")) return;
-    await axios.delete(`http://localhost:2000/festival/${id}`);
+    await axios.delete(`https://vadgaon-hero-s.onrender.com/festival/${id}`);
     fetchFestivals();
   };
 
@@ -260,7 +260,7 @@ const AdminFestival = () => {
                 {festival.photos.map((photo) => (
                   <img
                     key={photo._id}
-                    src={`http://localhost:2000/${photo.url}`}
+                    src={`https://vadgaon-hero-s.onrender.com/${photo.url}`}
                     alt=""
                   />
                 ))}

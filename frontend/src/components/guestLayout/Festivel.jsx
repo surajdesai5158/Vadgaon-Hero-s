@@ -13,7 +13,7 @@ const Festival = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:2000/festival")
+      .get("https://vadgaon-hero-s.onrender.com/festival")
       .then((res) => {
         setFestivals(res.data);
         setLoading(false);
@@ -129,7 +129,7 @@ const Festival = () => {
             </button>
 
             <img
-              src={`http://localhost:2000/${
+              src={`https://vadgaon-hero-s.onrender.com/${
                 festivals[viewer.festivalIndex].photos[
                   viewer.photoIndex
                 ].url
@@ -188,7 +188,7 @@ const Festival = () => {
               {festival.photos.map((photo, photoIndex) => (
                 <img
                   key={photo._id}
-                  src={`http://localhost:2000/${photo.url}`}
+                  src={`https://vadgaon-hero-s.onrender.com/${photo.url}`}
                   alt={festival.festivalName}
                   onClick={() =>
                     setViewer({

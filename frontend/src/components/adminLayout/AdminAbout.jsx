@@ -8,7 +8,7 @@ const AdminAbout = () => {
   const [preview, setPreview] = useState([]);
   const [data, setData] = useState([]);
 
-  const API = "http://localhost:2000/api/about";
+  const API = "https://vadgaon-hero-s.onrender.com/api/about";
 
   useEffect(() => {
     fetchData();
@@ -104,7 +104,7 @@ const AdminAbout = () => {
               {item.photos.map((photo, i) => (
                 <img
                   key={i}
-                  src={`http://localhost:2000/${photo.url}`}
+                  src={`https://vadgaon-hero-s.onrender.com/${photo.url}`}
                   alt=""
                   style={styles.recordImg}
                 />

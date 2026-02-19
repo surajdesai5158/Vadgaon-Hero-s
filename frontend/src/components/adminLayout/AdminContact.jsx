@@ -7,7 +7,7 @@ const AdminContact = () => {
   const [loading, setLoading] = useState(true);
 
   const fetchContacts = async () => {
-    const res = await axios.get("http://localhost:2000/all");
+    const res = await axios.get("https://vadgaon-hero-s.onrender.com/all");
     setMessages(res.data);
     setLoading(false);
   };
@@ -19,7 +19,7 @@ const AdminContact = () => {
   const handleReply = async (id) => {
     try {
       await axios.put(
-        `http://localhost:2000/reply/${id}`,
+        `https://vadgaon-hero-s.onrender.com/reply/${id}`,
         { reply: replyText[id] }
       );
 
@@ -33,7 +33,7 @@ const AdminContact = () => {
 
   const deleteMessage = async (id) => {
     if (window.confirm("Are you sure you want to delete this message?")) {
-      await axios.delete(`http://localhost:2000/message/delete/${id}`);
+      await axios.delete(`https://vadgaon-hero-s.onrender.com/message/delete/${id}`);
       fetchContacts();
     }
   };

@@ -14,7 +14,7 @@ const AdminCricket = () => {
   const [preview, setPreview] = useState([]);
   const [results, setResults] = useState([]);
 
-  const API = "http://localhost:2000/api/cricket";
+  const API = "https://vadgaon-hero-s.onrender.com/api/cricket";
 
   useEffect(() => {
     fetchResults();
@@ -115,7 +115,7 @@ const AdminCricket = () => {
               {item.photos?.map((photo, i) => (
                 <img
                   key={i}
-                  src={`http://localhost:2000/uploads/${photo}`}
+                  src={`https://vadgaon-hero-s.onrender.com/uploads/${photo}`}
                   alt=""
                   style={styles.image}
                 />

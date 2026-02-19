@@ -28,7 +28,7 @@ const GuestContact = () => {
     setError("");
 
     try {
-      await axios.post("http://localhost:2000/contact", formData);
+      await axios.post("https://vadgaon-hero-s.onrender.com/contact", formData);
       setSuccess("Message sent successfully!");
       setFormData({ name: "", email: "", message: "" });
     } catch (err) {

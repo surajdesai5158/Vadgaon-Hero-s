@@ -9,7 +9,7 @@ const Temple = () => {
   });
 
   useEffect(() => {
-    axios.get("http://localhost:2000/api/temple").then((res) => {
+    axios.get("https://vadgaon-hero-s.onrender.com/api/temple").then((res) => {
       setTemples(res.data);
     });
   }, []);
@@ -49,7 +49,7 @@ const Temple = () => {
           </button>
 
           <img
-            src={`http://localhost:2000/${
+            src={`https://vadgaon-hero-s.onrender.com/${
               temples[viewer.templeIndex].photos[viewer.photoIndex].url
             }`}
             alt="Temple"
@@ -77,7 +77,7 @@ const Temple = () => {
               {temple.photos.map((photo, pIndex) => (
                 <img
                   key={photo._id}
-                  src={`http://localhost:2000/${photo.url}`}
+                  src={`https://vadgaon-hero-s.onrender.com/${photo.url}`}
                   alt="Temple"
                   style={styles.image}
                   onClick={() =>

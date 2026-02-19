@@ -11,7 +11,7 @@ import {
   Spinner,
 } from "react-bootstrap";
 
-const API_BASE = "http://localhost:2000";
+const API_BASE = "https://vadgaon-hero-s.onrender.com";
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
