@@ -11,13 +11,14 @@ import cricketrouter from "./routes/cricketRoutes.js";
 import aboutrouter from "./routes/aboutRoutes.js";
 
 dotenv.config();
-
 const app = express();
-app.use(bodyParser.json());
-app.use(cors({
-  origin: ["https://vadgaon-hero-s.vercel.app"],
-  credentials: true
-}));
+app.use(express.json());
+app.use(
+  cors({
+    origin: ["https://vadgaon-hero-s.vercel.app"],
+    credentials: true,
+  })
+);
 
 
 app.use("/", UserRouter);

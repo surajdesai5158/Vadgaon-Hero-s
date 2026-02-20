@@ -10,10 +10,40 @@ import {
 
 const Festivalrouter = express.Router();
 
-Festivalrouter.post("/create", upload.array("photos", 15), createFestival);
-Festivalrouter.get("/", getFestivals);
-Festivalrouter.put("/:id", upload.array("photos", 15), updateFestival);
-Festivalrouter.delete("/:id", deleteFestival);
-Festivalrouter.delete("/:festivalId/photo/:photoId", deleteFestivalPhoto);
+/**
+ * CREATE FESTIVAL (with photos)
+ */
+Festivalrouter.post(
+  "/festival",
+  upload.array("photos", 15),
+  createFestival
+);
+
+/**
+ * GET ALL FESTIVALS
+ */
+Festivalrouter.get("/festival", getFestivals);
+
+/**
+ * UPDATE FESTIVAL
+ */
+Festivalrouter.put(
+  "/festival/:id",
+  upload.array("photos", 15),
+  updateFestival
+);
+
+/**
+ * DELETE FESTIVAL
+ */
+Festivalrouter.delete("/festival/:id", deleteFestival);
+
+/**
+ * DELETE SINGLE FESTIVAL PHOTO
+ */
+Festivalrouter.delete(
+  "/festival/:festivalId/photo/:photoId",
+  deleteFestivalPhoto
+);
 
 export default Festivalrouter;

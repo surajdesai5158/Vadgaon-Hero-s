@@ -1,40 +1,54 @@
 import Festival from "../models/Festivel.js";
 
+/**
+ * CREATE FESTIVAL
+ */
 export const createFestival = async (req, res) => {
   try {
-    const photos = req.files?.map(file => ({
-      url: file.path,
-    }));
+    const photos = req.files
+      ? req.files.map(file => ({
+          url: file.path, // ✅ Cloudinary URL
+        }))
+      : [];
 
-    const festival = new Festival({
+    const festival = await Festival.create({
       festivalName: req.body.festivalName,
       festivalDate: req.body.festivalDate,
       description: req.body.description,
       photos,
     });
 
-    await festival.save();
-    res.status(201).json(festival);
+    res.status(201).json({
+      message: "Festival created successfully",
+      data: festival,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
+/**
+ * GET ALL FESTIVALS
+ */
 export const getFestivals = async (req, res) => {
   try {
     const festivals = await Festival.find().sort({ festivalDate: 1 });
-    res.json(festivals);
+    res.status(200).json(festivals);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-
+/**
+ * UPDATE FESTIVAL
+ */
 export const updateFestival = async (req, res) => {
   try {
     const festival = await Festival.findById(req.params.id);
-    if (!festival)
+
+    if (!festival) {
       return res.status(404).json({ message: "Festival not found" });
+    }
 
     festival.festivalName =
       req.body.festivalName || festival.festivalName;
@@ -43,7 +57,7 @@ export const updateFestival = async (req, res) => {
     festival.description =
       req.body.description || festival.description;
 
-    // Add new photos
+    // ✅ Add new Cloudinary images
     if (req.files && req.files.length > 0) {
       const newPhotos = req.files.map(file => ({
         url: file.path,
@@ -52,35 +66,60 @@ export const updateFestival = async (req, res) => {
     }
 
     await festival.save();
-    res.json(festival);
+
+    res.status(200).json({
+      message: "Festival updated successfully",
+      data: festival,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
+/**
+ * DELETE SINGLE FESTIVAL PHOTO (DB ONLY)
+ */
 export const deleteFestivalPhoto = async (req, res) => {
   try {
     const { festivalId, photoId } = req.params;
 
     const festival = await Festival.findById(festivalId);
-    if (!festival)
+    if (!festival) {
       return res.status(404).json({ message: "Festival not found" });
+    }
 
     festival.photos = festival.photos.filter(
       photo => photo._id.toString() !== photoId
     );
 
     await festival.save();
-    res.json({ message: "Photo removed", festival });
+
+    res.status(200).json({
+      message: "Photo removed successfully",
+      data: festival,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
+/**
+ * DELETE FESTIVAL (Cloudinary-safe)
+ */
 export const deleteFestival = async (req, res) => {
   try {
+    const festival = await Festival.findById(req.params.id);
+
+    if (!festival) {
+      return res.status(404).json({ message: "Festival not found" });
+    }
+
+    // ✅ Only delete DB record (no fs, no uploads)
     await Festival.findByIdAndDelete(req.params.id);
-    res.json({ message: "Festival deleted" });
+
+    res.status(200).json({
+      message: "Festival deleted successfully",
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
