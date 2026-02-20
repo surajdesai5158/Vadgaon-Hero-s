@@ -1,10 +1,7 @@
 import express from "express";
 import upload from "../middleware/Upload.js";
-import {
-  addTemple,
-  deleteTemple,
-  getTemples,
-} from "../controllers/templeController.js";
+import { addTemple, deleteTemple, getTemples } from "../controllers/templeController.js";
+
 
 const templerouter = express.Router();
 

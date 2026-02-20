@@ -1,6 +1,7 @@
 import express from "express";
 import upload from "../middleware/Upload.js";
-import { addResult, deleteResult, getAllResults } from "../controllers/cricketController.js";
+import { addResult, deleteResult, getAllResults } from "../controllers/cricketLeagueController.js";
+
 
 
 const cricketrouter = express.Router();

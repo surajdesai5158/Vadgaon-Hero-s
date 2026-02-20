@@ -1,12 +1,7 @@
 import express from "express";
 import upload from "../middleware/Upload.js";
-import {
-  createFestival,
-  getFestivals,
-  updateFestival,
-  deleteFestival,
-  deleteFestivalPhoto,
-} from "../controllers/FestivelController.js";
+import { createFestival, deleteFestival, deleteFestivalPhoto, getFestivals, updateFestival } from "../controllers/FestivelController.js";
+
 
 const Festivalrouter = express.Router();
 

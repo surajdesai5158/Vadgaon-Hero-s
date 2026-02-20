@@ -5,10 +5,12 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import UserRouter from "./routes/UserRouter.js";
-import Festivalrouter from "./routes/FestivalRoter.js";
-import templerouter from "./routes/TempleRouter.js";
+
+
 import cricketrouter from "./routes/cricketRoutes.js";
 import aboutrouter from "./routes/aboutRoutes.js";
+import Festivalrouter from "./routes/festivalRoutes.js";
+import templerouter from "./routes/templeRoutes.js";
 
 dotenv.config();
 const app = express();
